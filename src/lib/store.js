@@ -2,6 +2,21 @@
  * A true app would be more complex and separated into different files.
  */
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+//import { TaskList } from "../components/TaskList";
+
+// Our new error field is configured here
+const AppStateSlice = createSlice({
+  name: "appState",
+  initialState: "",
+  reducers: {
+    updateAppState: (state, action) => {
+      return {
+        ...state,
+        isError: action.payload,
+      };
+    },
+  },
+});
 
 /*
  * The initial state of our store when the app loads.
@@ -34,7 +49,10 @@ const TasksSlice = createSlice({
 });
 
 // The actions contained in the slice are exported for usage in our components
-export const { updateTaskState, updateTaskTitle } = TasksSlice.actions;
+export const { updateTaskState } = TasksSlice.actions;
+
+// The actions contained in the new slice are exported to be used in our components
+export const { updateAppState } = AppStateSlice.actions;
 
 /*
  * Our app's store configuration goes here.
@@ -44,7 +62,8 @@ export const { updateTaskState, updateTaskTitle } = TasksSlice.actions;
 const store = configureStore({
   reducer: {
     tasks: TasksSlice.reducer,
+    isError: AppStateSlice.reducer,
   },
 });
-
+////isError: TasksSlice.reducer,
 export default store;
