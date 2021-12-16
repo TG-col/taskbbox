@@ -24,3 +24,7 @@ h1 {
 button + button {
   margin-left: 10px;
 }
+
+.logo{
+  width: 100px;
+}

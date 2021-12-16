@@ -205,6 +205,13 @@ textarea {
   src: url(https://fonts.gstatic.com/s/nunitosans/v6/pe03MImSLYBIv1o4X1M8cc8aBc5tU1Q.ttf)
     format("truetype");
 }
+
+@font-face {
+  font-family: 'Assistant light';
+  src: url('./assets/font/Assistant-Light.ttf');
+  font-style: normal;
+}
+
 .force-wrap {
   word-wrap: break-word;
   word-break: break-all;
@@ -240,11 +247,11 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Assistant light', "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   color: #333;
   font-size: 16px;
-  background-color: #26c6da;
+  /*background-color: #26c6da;*/
 }
 h1,
 h2,
@@ -252,7 +259,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Assistant light',"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   margin: 0;
   padding: 0;
@@ -308,7 +315,7 @@ input[type="password"],
 textarea {
   font-size: 14px;
   line-height: 20px;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Assistant light', "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   padding: 0.75rem 0;
   line-height: 1.5rem !important;
