@@ -6,12 +6,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
-svg {
-  display: inline-block;
-  vertical-align: top;
+header{
+  background-color: white;
 }
-
 h1 {
   font-weight: 900;
   font-size: 20px;

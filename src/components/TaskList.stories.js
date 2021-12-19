@@ -13,7 +13,7 @@ import * as TaskStories from "./Task.stories";
 export default {
   component: PureTaskList,
   title: "PureTaskList",
-  decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
+  decorators: [(story) => <div style={{ padding: "3rem", backgroundColor: "lightgray" }}>{story()}</div>],
 };
 // const Template = (args) => <TaskList {...args} />;
 const Template = (args) => <PureTaskList {...args} />;
