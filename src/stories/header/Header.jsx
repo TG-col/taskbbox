@@ -20,26 +20,24 @@ const image = {
 };
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
-  <header>
-    <div className="wrapper">
-      <div>
-        {user ? (
-            <Button size="small" onClick={onLogout} label="Log out" />
-        ) : (
-            <>
-              <Button size="small" onClick={onLogin} label="Log in" />
-              <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
-            </>
-        )}
+    <header>
+      <div className="wrapper">
+        <div>
+          {user ? (
+              <Button size="small" onClick={onLogout} label="Log out" />
+          ) : (
+              <>
+                <Button size="small" onClick={onLogin} label="Log in" />
+                <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
+              </>
+          )}
+        </div>
+        <h1>כלמוביל - עמוד הבית</h1>
+        <div>
+          <img className={"logo"} src={image.src} alt={image.alt} />
+        </div>
       </div>
-      <h1>כלמוביל - עמוד הבית</h1>
-      <div>
-
-        <img className={"logo"} src={image.src} alt={image.alt} />;
-      </div>
-
-    </div>
-  </header>
+    </header>
 );
 
 Header.propTypes = {
