@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import NextArrow from '../assets/icon/next-arrow.svg';
+import PrevArrow from '../assets/icon/prev-arrow.svg';
 
 import './carousel.css';
-import PropTypes from "prop-types";
-import {Button} from "../stories/Button";
 
 export const CarouselItem = ({children, width}) => {
     return(
@@ -24,7 +24,7 @@ export const CarouselWrap = (props) => {
                     updateIndex(activeIndex + 1);
                 }
 
-            }, 1000);
+            }, 2000);
             return () => {
                 if(interval){
                     clearInterval(interval);
@@ -34,7 +34,6 @@ export const CarouselWrap = (props) => {
     });
 
     const updateIndex = (newIndex) =>{
-
         if(props.type==="default"){
             if(newIndex < 0){
                 newIndex = 0;
@@ -50,8 +49,32 @@ export const CarouselWrap = (props) => {
             }
             setActiveIndex(newIndex);
         }
-
     };
+
+    const ButtonNext = () =>{
+        if(!props.arrows){
+            return <button onClick={()=>{
+                updateIndex(activeIndex +1);
+            }}>Next</button>
+        } else {
+            return <button className="arrow arrow-next" onClick={()=>{
+                updateIndex(activeIndex +1);
+            }}><img src={NextArrow} alt={"next slide icon"}/></button>
+        }
+    }
+
+
+    const ButtonPrev = () =>{
+        if(!props.arrows){
+           return  <button onClick={()=>{
+               updateIndex(activeIndex -1);
+           }}>Prev</button>
+        } else {
+            return <button className="arrow arrow-prev" onClick={()=>{
+                updateIndex(activeIndex -1);
+            }}><img src={PrevArrow} alt={"previous slide icon"}/></button>
+        }
+    }
 
     return(
         <div className="carousel"
@@ -59,35 +82,35 @@ export const CarouselWrap = (props) => {
              onMouseEnter={() => setPaused(true)}
              onMouseLeave={() => setPaused(false)}
             >
-            <div className="inner" style={{transform: `translateX(-${activeIndex * 100}%)`}} >
+            <div className="inner" style={{transform: `translateX(${activeIndex * 100}%)`}} >
                 {React.Children.map(props.children, (child, index) => {
                     return React.cloneElement(child, {width: "100%"});
                 })}
             </div>
             <div className="indicators">
-                <button onClick={()=>{
-                    updateIndex(activeIndex -1);
-                }}>Prev</button>
-                {React.Children.map(props.children, (child, index) => {
-                    return (
-                      <button
-                          className={`${index === activeIndex ? "active" : ""}`}
-                          onClick={()=>{
-                          updateIndex(index);
-                      }}> {index+1} </button>
-                    );
-                })}
-                <button onClick={()=>{
-                    updateIndex(activeIndex +1);
-                }}>Next</button>
+                <ButtonPrev />
+                <div className="bullets-wrap">
+                    {React.Children.map(props.children, (child, index) => {
+                        let bulletLabel = (props.bullets)? "" : index+1;
+                        return (
+                          <button
+                              className={`${index === activeIndex ? "active" : ""} ${props.bullets ? " bullet " : ""}`}
+                              onClick={()=>{
+                              updateIndex(index);
+                          }}> {bulletLabel} </button>
+                        );
+                    })}
+                </div>
+                <ButtonNext />
+
             </div>
         </div>
     );
 };
 
-export default function Carousel({carousel: { id, type }}) {
+export default function Carousel({carousel: { id, type, bullets,arrows }}) {
     return (
-        <CarouselWrap id={id} type={type}>
+        <CarouselWrap id={id} type={type} bullets={bullets} arrows={arrows}>
             <CarouselItem>Item 1</CarouselItem>
             <CarouselItem>Item 2</CarouselItem>
             <CarouselItem>Item 3</CarouselItem>
@@ -104,7 +127,11 @@ Carousel.propTypes = {
         /**
          * what type of carousel
          */
-        type: PropTypes.oneOf(['default', 'infinite']),
+        type: PropTypes.oneOf(['default', 'infinite','bullets','arrows']),
+        /**
+         * add rounded bullets - true/false
+         */
+        bullets: PropTypes.bool,
     }),
 
 };
