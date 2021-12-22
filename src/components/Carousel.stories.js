@@ -28,3 +28,37 @@ Infinite.args = {
     state: "CAROUSEL_INFINITE",
   },
 };
+
+export const Bullets = Template.bind({});
+Bullets.args = {
+  carousel: {
+    ...Default.args.carousel,
+    type: "infinite",
+    bullets: true,
+    state: "CAROUSEL_BULLETS",
+  },
+};
+
+export const Arrows = Template.bind({});
+Arrows.args = {
+  carousel: {
+    ...Default.args.carousel,
+    type: "default",
+    bullets: true,
+    arrows: true,
+    state: "CAROUSEL_ARROWS",
+  },
+};
+
+// export const WithImages = Template.bind({});
+// WithImages.args = {
+//   carousel: {
+//     ...Default.args.carousel,
+//     type: "default",
+//     bullets: true,
+//     arrows: true,
+//     images: images,
+//     state: "CAROUSEL_WITH_IMAGES",
+//   },
+// };
+

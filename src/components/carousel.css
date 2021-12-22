@@ -4,6 +4,7 @@
 .inner{
     white-space: nowrap;
     transition: transform 0.3s;
+    direction: rtl;
 }
 .carousel-item{
     display: inline-flex;
@@ -17,14 +18,43 @@
 .indicators{
     display: flex;
     justify-content: center;
+    align-items: center;
+    direction: rtl;
 }
-
-.indicators > button{
+.bullets-wrap{
+   direction: rtl;
+}
+.bullets-wrap > button{
     margin: 5px;
     padding: 5px;
 }
+.bullets-wrap > button.bullet{
+   width: 10px;
+   height: 10px;
+   border-radius: 20px;
+}
+.indicators > button.arrow{
+    border-radius: 0;
+    background-color: transparent;
+    position: fixed;
+    top: 30%;
+    margin: 10px;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+}
+.indicators > button.arrow.arrow-next{
+    left: 1rem;
 
-.indicators > button.active{
+}
+.indicators > button.arrow.arrow-prev{
+    right: 1rem;
+
+}
+.indicators > button > img {
+    height: inherit;
+}
+.indicators >.bullets-wrap > button.active{
     background-color: cornflowerblue;
     color: #fff;
 }
