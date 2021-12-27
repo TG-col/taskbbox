@@ -1,3 +1,5 @@
+
+
 .carousel{
     overflow: hidden;
 }
@@ -58,3 +60,23 @@
     background-color: cornflowerblue;
     color: #fff;
 }
+.play-pause-btns {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.play-pause-btns > button{
+    background-color: transparent;
+
+}
+.play-pause-btns > button:hover > img{
+   filter: contrast(0.5);
+}
+.play-pause-btns > button > img{
+    width: 30px;
+    height: 30px;
+
+}
+

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Task from "./Task";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateTaskState } from "../lib/store";
+import { updateTaskState } from "../../lib/store";
 
 export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   const events = {

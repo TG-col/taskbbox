@@ -29,7 +29,7 @@ const Mockstore = configureStore({
 export default {
   component: PureInboxScreen,
   decorators: [(story) => <Provider store={Mockstore}>{story()}</Provider>],
-  title: "PureInboxScreen",
+  title: "Task/PureInboxScreen",
 };
 
 const Template = (args) => <PureInboxScreen {...args} />;

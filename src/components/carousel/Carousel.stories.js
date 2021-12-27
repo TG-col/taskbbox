@@ -3,8 +3,8 @@ import React from "react";
 import Carousel from "./Carousel";
 
 export default {
+  title: "Colmobil/Carousel",
   component: Carousel,
-  title: "Carousel",
 };
 
 const Template = (args) => <Carousel {...args} />;
@@ -47,6 +47,17 @@ Arrows.args = {
     bullets: true,
     arrows: true,
     state: "CAROUSEL_ARROWS",
+  },
+};
+
+export const PlayPauseCarousel = Template.bind({});
+PlayPauseCarousel.args = {
+  carousel: {
+    ...Default.args.carousel,
+    type: "infinite",
+    bullets: true,
+    arrows: true,
+    state: "CAROUSEL_PLAY_PAUSE",
   },
 };
 
