@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
-import NextArrow from '../assets/icon/next-arrow.svg';
-import PrevArrow from '../assets/icon/prev-arrow.svg';
+import NextArrow from '../../assets/icon/next-arrow.svg';
+import PrevArrow from '../../assets/icon/prev-arrow.svg';
+import PlayPauseButtons from './PlayPauseButtons'
 
 import './carousel.css';
 
@@ -103,14 +104,16 @@ export const CarouselWrap = (props) => {
                 </div>
                 <ButtonNext />
 
+
             </div>
+            {props.state==="CAROUSEL_PLAY_PAUSE" && <PlayPauseButtons />}
         </div>
     );
 };
 
-export default function Carousel({carousel: { id, type, bullets,arrows }}) {
+export default function Carousel({carousel: { ...props }}) {
     return (
-        <CarouselWrap id={id} type={type} bullets={bullets} arrows={arrows}>
+        <CarouselWrap {...props}>
             <CarouselItem>Item 1</CarouselItem>
             <CarouselItem>Item 2</CarouselItem>
             <CarouselItem>Item 3</CarouselItem>
@@ -132,6 +135,7 @@ Carousel.propTypes = {
          * add rounded bullets - true/false
          */
         bullets: PropTypes.bool,
+
     }),
 
 };
